@@ -1,11 +1,36 @@
-import { AiFillStar } from "react-icons/ai";
+import { Grid, GridItem, Show } from "@chakra-ui/react"
+import Navigation from "./modules/Navigation"
+
 
 
 function App() {
 
     return (
         <>
-            <AiFillStar className="rating-star" />
+            <Grid
+                templateAreas={{
+                    base: `"nav" "main"`,
+                    lg: `"nav nav" "aside main"`,
+                }}
+                templateColumns={{
+                    base: "1fr",
+                    lg: "200px 1fr",
+                }}
+            >
+                <GridItem area="nav" bg="tomato">
+                    <Navigation />
+                </GridItem>
+                <Show
+                    above="lg"
+                >
+                    <GridItem area="aside" bg="papayawhip">
+                        aside
+                    </GridItem>
+                </Show>
+                <GridItem area="main" bg="gold">
+                    main
+                </GridItem>
+            </Grid>
         </>
     )
 }
